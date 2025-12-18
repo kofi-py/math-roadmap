@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>community forum | math expert roadmap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B9D;
+            --secondary: #4ECDC4;
+            --accent: #FFE66D;
+            --purple: #A594F9;
+            --orange: #FF8C42;
+            --blue: #6C63FF;
+            --green: #06FFA5;
+            --dark: #1A1A2E;
+            --light: #F8F9FA;
+            --gray: #6C757D;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #ffeef8 0%, #e0f7fa 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo::before {
+            content: "π";
+            font-size: 2rem;
+            color: var(--secondary);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .header {
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .new-post-btn {
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .new-post-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 157, 0.3);
+        }
+
+        .forum-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            padding: 3rem 0;
+        }
+
+        .sidebar {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .sidebar h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .category {
+            padding: 0.75rem 1rem;
+            margin: 0.5rem 0;
+            background: linear-gradient(90deg, rgba(255, 107, 157, 0.05), rgba(78, 205, 196, 0.05));
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .category:hover, .category.active {
+            border-left-color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .category-icon {
+            margin-right: 0.5rem;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .post-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .post-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .post-meta {
+            display: flex;
+            gap: 1.5rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .post-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .post-excerpt {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .post-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 0.35rem 1rem;
+            background: linear-gradient(135deg, var(--secondary), var(--blue));
+            color: white;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .tag.level {
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+        }
+
+        .tag.help {
+            background: linear-gradient(135deg, var(--orange), var(--accent));
+        }
+
+        .post-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .stat-icon {
+            font-size: 1.2rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: white;
+            border-radius: 20px;
+        }
+
+        .empty-state h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .empty-state p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: block;
+            margin: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .copyright {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .forum-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">math expert roadmap</a>
+            <ul>
+                <li><a href="curriculum.html">curriculum</a></li>
+                <li><a href="diagnostic.html">diagnostic</a></li>
+                <li><a href="forum.html">forum</a></li>
+                <li><a href="index.html#faq">faq</a></li>
+                <li><a href="index.html#contact">contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="header">
+        <div class="container">
+            <h1>community forum</h1>
+            <p>connect with fellow learners, ask questions, share insights, and celebrate your mathematical journey together</p>
+            <button class="new-post-btn" onclick="alert('Post creation feature coming soon! Join our Discord for now.')">✏️ new post</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="forum-container">
+            <aside class="sidebar">
+                <h3>categories</h3>
+                <div class="category active" onclick="filterPosts('all')">
+                    <span class="category-icon">📚</span>
+                    all discussions
+                </div>
+                <div class="category" onclick="filterPosts('help')">
+                    <span class="category-icon">❓</span>
+                    homework help
+                </div>
+                <div class="category" onclick="filterPosts('concepts')">
+                    <span class="category-icon">💡</span>
+                    concept explanations
+                </div>
+                <div class="category" onclick="filterPosts('resources')">
+                    <span class="category-icon">🔗</span>
+                    resource sharing
+                </div>
+                <div class="category" onclick="filterPosts('success')">
+                    <span class="category-icon">🎉</span>
+                    success stories
+                </div>
+                <div class="category" onclick="filterPosts('study')">
+                    <span class="category-icon">📖</span>
+                    study groups
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <!-- Sample Forum Posts -->
+                <div class="post-card" data-category="help">
+                    <div class="post-header">
+                        <div>
+                            <div class="post-title">struggling with quadratic formula - any tips?</div>
+                            <div class="post-meta">
+                                <span class="post-author">sarah_learns</span>
+                                <span>•</span>
+                                <span>2 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-excerpt">
+                        i keep making mistakes when applying the quadratic formula. i understand the concept but struggle with the arithmetic, especially with negative numbers under the square root. does anyone have memorization tricks or practice resources?
+                    </div>
+                    <div class="post-tags">
+                        <span class="tag level">level 9: algebra</span>
+                        <span class="tag help">help needed</span>
+                    </div>
+                    <div class="post-stats">
+                        <div class="stat">
+                            <span class="stat-icon">💬</span>
+                            <span>12 replies</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-icon">❤️</span>
+                            <span>8 helpful</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-card" data-category="success">
+                    <div class="post-header">
+                        <div>
+                            <div class="post-title">finally understood derivatives! 🎉</div>
+                            <div class="post-meta">
+                                <span class="post-author">mathfan2025</span>
+                                <span>•</span>
+                                <span>5 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-excerpt">
+                        after weeks of confusion, derivatives finally clicked! the key was visualizing them as slopes of tangent lines rather than just memorizing formulas. khan academy's interactive graphs helped so much. keep pushing through the tough topics!
+                    </div>
+                    <div class="post-tags">
+                        <span class="tag level">level 12: calculus</span>
+                        <span class="tag">success story</span>
+                    </div>
+                    <div class="post-stats">
+                        <div class="stat">
+                            <span class="stat-icon">💬</span>
+                            <span>24 replies</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-icon">❤️</span>
+                            <span>45 helpful</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-card" data-category="resources">
+                    <div class="post-header">
+                        <div>
+                            <div class="post-title">best youtube channels for geometry?</div>
+                            <div class="post-meta">
+                                <span class="post-author">geometrygeek</span>
+                                <span>•</span>
+                                <span>1 day ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-excerpt">
+                        looking for youtube channels that explain geometry proofs really well. khan academy is great but i need multiple perspectives. especially interested in channels that show visual proofs and real-world applications.
+                    </div>
+                    <div class="post-tags">
+                        <span class="tag level">level 10: geometry</span>
+                        <span class="tag">resources</span>
+                    </div>
+                    <div class="post-stats">
+                        <div class="stat">
+                            <span class="stat-icon">💬</span>
+                            <span>18 replies</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-icon">❤️</span>
+                            <span>22 helpful</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-card" data-category="concepts">
+                    <div class="post-header">
+                        <div>
+                            <div class="post-title">can someone explain imaginary numbers simply?</div>
+                            <div class="post-meta">
+                                <span class="post-author">curious_student</span>
+                                <span>•</span>
+                                <span>1 day ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-excerpt">
+                        i'm in algebra 2 and we just started complex numbers. i understand that i = √(-1), but i don't get WHY we need them or what they actually represent. can someone explain this in simple terms?
+                    </div>
+                    <div class="post-tags">
+                        <span class="tag level">level 11: algebra 2</span>
+                        <span class="tag help">concept help</span>
+                    </div>
+                    <div class="post-stats">
+                        <div class="stat">
+                            <span class="stat-icon">💬</span>
+                            <span>31 replies</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-icon">❤️</span>
+                            <span>52 helpful</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-card" data-category="study">
+                    <div class="post-header">
+                        <div>
+                            <div class="post-title">starting a weekly trigonometry study group</div>
+                            <div class="post-meta">
+                                <span class="post-author">studybuddy</span>
+                                <span>•</span>
+                                <span>2 days ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-excerpt">
+                        looking for 3-5 people to form a virtual study group for trigonometry. planning to meet sundays at 3pm EST on zoom. we'll work through practice problems together and explain concepts to each other. dm me if interested!
+                    </div>
+                    <div class="post-tags">
+                        <span class="tag level">level 10: trigonometry</span>
+                        <span class="tag">study group</span>
+                    </div>
+                    <div class="post-stats">
+                        <div class="stat">
+                            <span class="stat-icon">💬</span>
+                            <span>15 replies</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-icon">❤️</span>
+                            <span>28 interested</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-card" data-category="help">
+                    <div class="post-header">
+                        <div>
+                            <div class="post-title">fraction division - why do we flip and multiply?</div>
+                            <div class="post-meta">
+                                <span class="post-author">parent_helper</span>
+                                <span>•</span>
+                                <span>3 days ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-excerpt">
+                        my 5th grader asked me why we flip the second fraction and multiply when dividing fractions. i showed her the rule but she wants to understand WHY it works. how can i explain this intuitively?
+                    </div>
+                    <div class="post-tags">
+                        <span class="tag level">level 6: fractions</span>
+                        <span class="tag help">parent question</span>
+                    </div>
+                    <div class="post-stats">
+                        <div class="stat">
+                            <span class="stat-icon">💬</span>
+                            <span>27 replies</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-icon">❤️</span>
+                            <span>38 helpful</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-card" data-category="success">
+                    <div class="post-header">
+                        <div>
+                            <div class="post-title">from failing algebra to acing calculus - my journey</div>
+                            <div class="post-meta">
+                                <span class="post-author">comeback_kid</span>
+                                <span>•</span>
+                                <span>1 week ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-excerpt">
+                        two years ago i failed algebra 1. today i got an A on my calculus midterm. this curriculum and community saved my relationship with math. here's what worked for me: consistent daily practice, asking questions without shame, and celebrating small wins...
+                    </div>
+                    <div class="post-tags">
+                        <span class="tag">success story</span>
+                        <span class="tag">motivation</span>
+                    </div>
+                    <div class="post-stats">
+                        <div class="stat">
+                            <span class="stat-icon">💬</span>
+                            <span>67 replies</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-icon">❤️</span>
+                            <span>142 inspired</span>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>navigation</h4>
+                    <a href="index.html">home</a>
+                    <a href="curriculum.html">curriculum</a>
+                    <a href="diagnostic.html">diagnostic</a>
+                    <a href="forum.html">forum</a>
+                </div>
+                <div class="footer-section">
+                    <h4>resources</h4>
+                    <a href="index.html#howitworks">how it works</a>
+                    <a href="index.html#faq">faq</a>
+                    <a href="index.html#testimonials">testimonials</a>
+                </div>
+                <div class="footer-section">
+                    <h4>connect</h4>
+                    <a href="forum.html">join the forum</a>
+                    <a href="mailto:hello@mathexpert.com">email us</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 math expert roadmap. making mathematics accessible to all.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function filterPosts(category) {
+            // Remove active class from all categories
+            document.querySelectorAll('.category').forEach(cat => {
+                cat.classList.remove('active');
+            });
+            
+            // Add active class to clicked category
+            event.target.closest('.category').classList.add('active');
+            
+            // Show/hide posts based on category
+            const posts = document.querySelectorAll('.post-card');
+            posts.forEach(post => {
+                if (category === 'all') {
+                    post.style.display = 'block';
+                } else {
+                    if (post.getAttribute('data-category') === category) {
+                        post.style.display = 'block';
+                    } else {
+                        post.style.display = 'none';
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

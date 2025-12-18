@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>math expert roadmap | from zero to expert</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B9D;
+            --secondary: #4ECDC4;
+            --accent: #FFE66D;
+            --purple: #A594F9;
+            --orange: #FF8C42;
+            --blue: #6C63FF;
+            --green: #06FFA5;
+            --dark: #1A1A2E;
+            --light: #F8F9FA;
+            --gray: #6C757D;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #ffeef8 0%, #e0f7fa 100%);
+            overflow-x: hidden;
+        }
+
+        .bg-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape.circle {
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        .shape.triangle {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 86px solid var(--secondary);
+        }
+
+        .shape.square {
+            background: var(--accent);
+            transform: rotate(45deg);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(30px, -30px) rotate(90deg); }
+            50% { transform: translate(-30px, 30px) rotate(180deg); }
+            75% { transform: translate(30px, 30px) rotate(270deg); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo::before {
+            content: "π";
+            font-size: 2rem;
+            color: var(--secondary);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--purple), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 5s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(30deg); }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--dark);
+            border: 2px solid var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            margin-top: 0.5rem;
+        }
+
+        .mission {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .mission h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark);
+        }
+
+        .mission-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .mission-text h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .mission-text ul {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .mission-text li {
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: linear-gradient(90deg, rgba(255, 107, 157, 0.1), rgba(78, 205, 196, 0.1));
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .formula-display {
+            text-align: center;
+            font-size: 3rem;
+            color: var(--purple);
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(165, 148, 249, 0.1), rgba(255, 230, 109, 0.1));
+            border-radius: 20px;
+            font-style: italic;
+        }
+
+        .how-it-works {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #fff5f8 0%, #e8f8f7 100%);
+        }
+
+        .how-it-works h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--dark);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .step {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+        }
+
+        .step h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .curriculum-snapshot {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .curriculum-snapshot h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .levels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .level-card {
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .level-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            transition: all 0.5s ease;
+        }
+
+        .level-card:hover::before {
+            top: -100%;
+            right: -100%;
+        }
+
+        .level-card:nth-child(2) {
+            background: linear-gradient(135deg, var(--secondary), var(--blue));
+        }
+
+        .level-card:nth-child(3) {
+            background: linear-gradient(135deg, var(--orange), var(--accent));
+        }
+
+        .level-card:nth-child(4) {
+            background: linear-gradient(135deg, var(--blue), var(--green));
+        }
+
+        .level-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .level-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .level-card .emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonials {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #ffeef8 0%, #e0f7fa 100%);
+        }
+
+        .testimonials h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 6rem;
+            color: var(--primary);
+            opacity: 0.2;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: var(--gray);
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .faq {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .faq h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .faq-item {
+            background: linear-gradient(90deg, rgba(255, 107, 157, 0.05), rgba(78, 205, 196, 0.05));
+            padding: 2rem;
+            margin: 1rem 0;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .faq-item h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: block;
+            margin: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .copyright {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .mission-content {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .stat-card:nth-child(1) { animation-delay: 0.1s; }
+        .stat-card:nth-child(2) { animation-delay: 0.2s; }
+        .stat-card:nth-child(3) { animation-delay: 0.3s; }
+        .stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-shapes">
+        <div class="shape circle" style="width: 150px; height: 150px; top: 10%; left: 5%;"></div>
+        <div class="shape triangle" style="top: 60%; left: 80%;"></div>
+        <div class="shape square" style="width: 100px; height: 100px; top: 30%; right: 10%;"></div>
+        <div class="shape circle" style="width: 200px; height: 200px; bottom: 10%; left: 15%;"></div>
+        <div class="shape square" style="width: 80px; height: 80px; top: 70%; left: 5%;"></div>
+    </div>
+
+    <nav id="top">
+        <div class="container">
+            <a href="index.html" class="logo">math expert roadmap</a>
+            <ul>
+                <li><a href="curriculum.html">curriculum</a></li>
+                <li><a href="diagnostic.html">diagnostic</a></li>
+                <li><a href="forum.html">forum</a></li>
+                <li><a href="#faq">faq</a></li>
+                <li><a href="#contact">contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>from zero to math expert — a free, colorful journey</h1>
+            <p>follow a curated, level-based curriculum from counting to calculus. master the fundamentals companies need and build problem-solving skills that open doors.</p>
+            <div class="cta-buttons">
+                <a href="curriculum.html" class="btn btn-primary">start the curriculum</a>
+                <a href="diagnostic.html" class="btn btn-secondary">take diagnostic test</a>
+            </div>
+            <p style="font-size: 1rem; color: var(--gray);">free to follow. community support available.</p>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">free courses</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">levels</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">free content</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">possibilities</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mission">
+        <div class="container">
+            <h2>our mission</h2>
+            <div class="mission-content">
+                <div class="mission-text">
+                    <h3>making math accessible to everyone</h3>
+                    <p>we believe mathematics is the universal language that unlocks understanding of the world. by curating free courses from kindergarten through college and pairing them with engaging problem sets, we help learners of all ages build confidence and competence.</p>
+                    <ul>
+                        <li>📐 curated resources from top educational platforms</li>
+                        <li>📊 clear progression from basic counting to advanced calculus</li>
+                        <li>🧮 practice problems and real-world applications</li>
+                        <li>🎯 diagnostic test to find your perfect starting point</li>
+                    </ul>
+                </div>
+                <div class="formula-display">
+                    e<sup>iπ</sup> + 1 = 0
+                    <div style="font-size: 1rem; margin-top: 1rem; color: var(--gray);">euler's identity: the most beautiful equation</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="howitworks">
+        <div class="container">
+            <h2>how it works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>take the diagnostic</h3>
+                    <p>complete our quick assessment to identify your current math level and find the perfect starting point for your learning journey.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>follow the path</h3>
+                    <p>progress through levels from basic arithmetic to calculus, with curated free courses and practice materials at each stage.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>join the community</h3>
+                    <p>get support from fellow learners in our forum, ask questions, share insights, and celebrate your mathematical achievements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="curriculum-snapshot">
+        <div class="container">
+            <h2>curriculum snapshot</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; color: var(--gray);">a leveled pathway with curated courses and practice materials. click through to the full curriculum for details.</p>
+            <div class="levels">
+                <div class="level-card">
+                    <div class="emoji">🔢</div>
+                    <h3>levels 1-3</h3>
+                    <p>counting, arithmetic, basic operations — building the foundation</p>
+                    <a href="curriculum.html#elementary" style="color: white; text-decoration: underline; margin-top: 1rem; display: inline-block;">explore →</a>
+                </div>
+                <div class="level-card">
+                    <div class="emoji">📐</div>
+                    <h3>levels 4-6</h3>
+                    <p>fractions, decimals, geometry — developing mathematical thinking</p>
+                    <a href="curriculum.html#middle" style="color: white; text-decoration: underline; margin-top: 1rem; display: inline-block;">explore →</a>
+                </div>
+                <div class="level-card">
+                    <div class="emoji">📊</div>
+                    <h3>levels 7-9</h3>
+                    <p>algebra, statistics, trigonometry — mastering key concepts</p>
+                    <a href="curriculum.html#high" style="color: white; text-decoration: underline; margin-top: 1rem; display: inline-block;">explore →</a>
+                </div>
+                <div class="level-card">
+                    <div class="emoji">∫</div>
+                    <h3>levels 10-12</h3>
+                    <p>calculus, linear algebra, discrete math — reaching expert level</p>
+                    <a href="curriculum.html#college" style="color: white; text-decoration: underline; margin-top: 1rem; display: inline-block;">explore →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2>what learners say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">following this roadmap i went from struggling with fractions to understanding calculus. the diagnostic helped me start at exactly the right level.</p>
+                    <p class="testimonial-author">— sarah, engineering student</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">the clear progression and free resources made it possible for me to fill in gaps from my education while working full time.</p>
+                    <p class="testimonial-author">— marcus, data analyst</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">as a parent homeschooling my kids, this curriculum gave us structure and confidence. the community forum was invaluable for questions.</p>
+                    <p class="testimonial-author">— aisha, homeschool parent</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2>frequently asked questions</h2>
+            <div class="faq-item">
+                <h3>is this really free?</h3>
+                <p>yes — the curriculum links to free course content from platforms like Khan Academy, MIT OpenCourseWare, and other trusted educational resources.</p>
+            </div>
+            <div class="faq-item">
+                <h3>what age is this for?</h3>
+                <p>our curriculum spans from kindergarten (ages 5-6) through college level mathematics. use our diagnostic to find your starting point regardless of age.</p>
+            </div>
+            <div class="faq-item">
+                <h3>how long does it take to complete?</h3>
+                <p>it depends on your starting level and pace. some learners move through several levels in months, while others take years to master advanced topics. learn at your own speed.</p>
+            </div>
+            <div class="faq-item">
+                <h3>do you provide certificates?</h3>
+                <p>we don't issue certificates, but many of the linked courses offer their own certificates. our focus is on building genuine mathematical understanding.</p>
+            </div>
+            <div class="faq-item">
+                <h3>is there community support?</h3>
+                <p>yes! visit our forum to ask questions, share insights, and connect with fellow math learners at all levels.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero" style="padding: 4rem 0;">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">ready to begin your math journey?</h2>
+            <p style="margin-bottom: 2rem;">take the diagnostic to find your level, or dive straight into the curriculum.</p>
+            <div class="cta-buttons">
+                <a href="diagnostic.html" class="btn btn-primary">take diagnostic test</a>
+                <a href="curriculum.html" class="btn btn-secondary">view curriculum</a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>navigation</h4>
+                    <a href="index.html">home</a>
+                    <a href="curriculum.html">curriculum</a>
+                    <a href="diagnostic.html">diagnostic</a>
+                    <a href="forum.html">forum</a>
+                </div>
+                <div class="footer-section">
+                    <h4>resources</h4>
+                    <a href="#howitworks">how it works</a>
+                    <a href="#faq">faq</a>
+                    <a href="#testimonials">testimonials</a>
+                </div>
+                <div class="footer-section">
+                    <h4>connect</h4>
+                    <a href="forum.html">join the forum</a>
+                    <a href="mailto:hello@mathexpert.com">email us</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 math expert roadmap. making mathematics accessible to all.</p>
+                <p style="margin-top: 0.5rem;">built with free educational content and community contributions.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat-card, .step, .level-card, .testimonial').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>curriculum | math expert roadmap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B9D;
+            --secondary: #4ECDC4;
+            --accent: #FFE66D;
+            --purple: #A594F9;
+            --orange: #FF8C42;
+            --blue: #6C63FF;
+            --green: #06FFA5;
+            --dark: #1A1A2E;
+            --light: #F8F9FA;
+            --gray: #6C757D;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #ffeef8 0%, #e0f7fa 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo::before {
+            content: "π";
+            font-size: 2rem;
+            color: var(--secondary);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .header {
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        #searchBox {
+            width: 100%;
+            max-width: 600px;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            border: 2px solid var(--secondary);
+            font-size: 1rem;
+            font-family: 'Manrope', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        #searchBox:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.2);
+        }
+
+        .progress-bar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 2rem auto;
+            max-width: 800px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .progress-text {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: var(--gray);
+        }
+
+        .progress-fill-container {
+            width: 100%;
+            height: 15px;
+            background: rgba(255, 107, 157, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .curriculum {
+            padding: 2rem 0 4rem;
+        }
+
+        .level-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .level-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid;
+            border-image: linear-gradient(90deg, var(--primary), var(--secondary)) 1;
+        }
+
+        .level-header h2 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .course-item {
+            background: linear-gradient(90deg, rgba(255, 107, 157, 0.03), rgba(78, 205, 196, 0.03));
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-radius: 15px;
+            border-left: 4px solid var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        .course-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .course-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .course-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .course-source {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .course-description {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .course-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-start {
+            padding: 0.75rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-start:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 157, 0.3);
+        }
+
+        .btn-complete {
+            padding: 0.75rem 1.5rem;
+            background: white;
+            color: var(--dark);
+            border: 2px solid var(--secondary);
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .btn-complete:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-complete.completed {
+            background: var(--green);
+            border-color: var(--green);
+            color: white;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: block;
+            margin: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .copyright {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .level-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .course-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-start, .btn-complete {
+                width: 100%;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">math expert roadmap</a>
+            <ul>
+                <li><a href="curriculum.html">curriculum</a></li>
+                <li><a href="diagnostic.html">diagnostic</a></li>
+                <li><a href="forum.html">forum</a></li>
+                <li><a href="index.html#faq">faq</a></li>
+                <li><a href="index.html#contact">contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="header">
+        <div class="container">
+            <h1>curriculum</h1>
+            <p>follow the levels below to progress from counting to calculus. mark courses as you complete them to track your progress.</p>
+            <div style="margin-top: 2rem;">
+                <input type="text" id="searchBox" placeholder="🔎 type to filter courses in real time...">
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="progress-bar">
+            <div class="progress-text">your progress: <span id="progressCount">0/100</span> courses (<span id="progressPercent">0</span>%)</div>
+            <div class="progress-fill-container">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="curriculum container">
+        <!-- Level 1: Early Counting & Numbers -->
+        <div class="level-section" id="level1">
+            <div class="level-header">
+                <h2>level 1: early counting & numbers 🔢</h2>
+                <p style="color: var(--gray); font-size: 1.1rem;">ages 5-6 | kindergarten</p>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">1. counting and cardinality</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    learn to count to 100, recognize numbers, compare quantities, and understand one-to-one correspondence.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/early-math#cc-kindergarten-counting" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">2. shapes and basic geometry</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    identify and describe basic 2d and 3d shapes: circles, squares, triangles, rectangles, spheres, cubes.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/early-math#cc-kindergarten-geometry" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">3. comparing and sorting</div>
+                        <div class="course-source">source: math playground</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    compare numbers and quantities, sort objects by attributes, and recognize patterns.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.mathplayground.com/kindergarten_games.html" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 2: Addition & Subtraction Basics -->
+        <div class="level-section" id="level2">
+            <div class="level-header">
+                <h2>level 2: addition & subtraction basics ➕</h2>
+                <p style="color: var(--gray); font-size: 1.1rem;">ages 6-7 | grade 1</p>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">4. addition within 20</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    master addition facts within 20, understand addition as combining, use strategies like making 10.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-1st-grade-math/cc-1st-addition-subtraction" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">5. subtraction within 20</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    understand subtraction as taking away, learn subtraction facts, solve word problems.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-1st-grade-math/cc-1st-addition-subtraction" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">6. place value (tens and ones)</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    understand place value for two-digit numbers, count by tens, compose and decompose numbers.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-1st-grade-math/cc-1st-place-value" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">7. measurement and time</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    compare lengths, tell time to the hour and half-hour, understand basic measurement concepts.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-1st-grade-math/cc-1st-measurement-data" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 3: Multiplication & Division Intro -->
+        <div class="level-section" id="level3">
+            <div class="level-header">
+                <h2>level 3: building to multiplication ✖️</h2>
+                <p style="color: var(--gray); font-size: 1.1rem;">ages 7-8 | grade 2</p>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">8. addition & subtraction within 100</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    fluently add and subtract within 100, use place value strategies, solve multi-step word problems.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-2nd-grade-math/cc-2nd-add-subtract-100" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">9. skip counting and arrays</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    skip count by 2s, 5s, and 10s. understand arrays as introduction to multiplication.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-2nd-grade-math#cc-2nd-add-subtract-1000" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">10. place value to 1000</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    understand three-digit numbers, hundreds place, compare and order numbers to 1000.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-2nd-grade-math/cc-2nd-place-value" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">11. money and data</div>
+                        <div class="course-source">source: math is fun</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    work with coins and bills, solve money word problems, create and interpret simple graphs.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.mathsisfun.com/money/" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 4: Mastering Operations -->
+        <div class="level-section" id="level4">
+            <div class="level-header">
+                <h2>level 4: mastering operations 📐</h2>
+                <p style="color: var(--gray); font-size: 1.1rem;">ages 8-9 | grade 3</p>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">12. multiplication fundamentals</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    learn multiplication tables through 10, understand multiplication as repeated addition and arrays.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-third-grade-math/imp-multiplication-and-division" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">13. division basics</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    understand division as sharing and grouping, relate division to multiplication, solve division word problems.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-third-grade-math/imp-multiplication-and-division" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">14. fractions introduction</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    understand fractions as parts of a whole, identify unit fractions, compare simple fractions.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-third-grade-math/imp-fractions" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">15. area and perimeter</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    calculate area and perimeter of rectangles, understand square units, solve real-world problems.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-third-grade-math/imp-geometry" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 5: Fractions & Decimals -->
+        <div class="level-section" id="level5">
+            <div class="level-header">
+                <h2>level 5: fractions & decimals 📏</h2>
+                <p style="color: var(--gray); font-size: 1.1rem;">ages 9-10 | grade 4</p>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">16. equivalent fractions</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    generate equivalent fractions, compare fractions with different denominators, understand fraction equivalence.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-fourth-grade-math/imp-fractions" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">17. decimal notation and place value</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    understand decimals as fractions, read and write decimals, compare decimal numbers.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-fourth-grade-math/imp-decimals" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">18. multi-digit multiplication</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    multiply multi-digit numbers using standard algorithm, understand distributive property.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-fourth-grade-math/imp-multiplication-and-division-2" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">19. long division</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    divide multi-digit numbers by one-digit divisors, understand remainders, interpret quotients.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-fourth-grade-math/imp-multiplication-and-division-2" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">20. angles and geometry</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    understand angles, measure angles with protractor, identify types of angles and triangles.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-fourth-grade-math/plane-figures" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 6: Advanced Fractions -->
+        <div class="level-section" id="level6">
+            <div class="level-header">
+                <h2>level 6: operations with fractions 🔢</h2>
+                <p style="color: var(--gray); font-size: 1.1rem;">ages 10-11 | grade 5</p>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">21. adding and subtracting fractions</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    add and subtract fractions with unlike denominators, find common denominators, simplify results.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-fifth-grade-math/add-subtract-fractions" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">22. multiplying fractions</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    multiply fractions and mixed numbers, understand fraction multiplication visually and algorithmically.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-fifth-grade-math/multiply-fractions" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">23. dividing fractions</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    divide fractions by fractions, understand why we "flip and multiply", solve division word problems.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-fifth-grade-math/divide-fractions" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">24. decimal operations</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    add, subtract, multiply, and divide decimals, understand decimal place value in operations.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-fifth-grade-math/cc-5th-decimals-topic" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">25. volume</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    understand volume as packing with unit cubes, calculate volume of rectangular prisms.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-fifth-grade-math/5th-measurement-and-geometry" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">26. coordinate plane</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    plot points on the coordinate plane, understand x and y axes, graph simple relationships.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-fifth-grade-math/cc-5th-geometry-topic" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 7: Ratios & Negative Numbers -->
+        <div class="level-section" id="level7">
+            <div class="level-header">
+                <h2>level 7: ratios, rates & integers 📊</h2>
+                <p style="color: var(--gray); font-size: 1.1rem;">ages 11-12 | grade 6</p>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">27. ratios and proportions</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    understand ratios, write equivalent ratios, solve proportion problems, work with rates.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-ratios-and-rates" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">28. percentages</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    convert between fractions, decimals, and percents, solve percent problems, calculate discounts and tax.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-rates-and-percentages" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">29. negative numbers</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    understand negative numbers on number line, add and subtract integers, absolute value.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-negative-number-topic" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">30. expressions and equations intro</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    write and evaluate algebraic expressions, understand variables, solve one-step equations.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-expressions-and-variables" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">31. statistical thinking</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    calculate mean, median, mode, and range, create and interpret histograms and box plots.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-data-statistics" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 8: Pre-Algebra -->
+        <div class="level-section" id="level8">
+            <div class="level-header">
+                <h2>level 8: pre-algebra 📈</h2>
+                <p style="color: var(--gray); font-size: 1.1rem;">ages 12-13 | grade 7</p>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">32. linear equations</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    solve multi-step equations, equations with variables on both sides, applications of equations.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-equations-inequalities" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">33. inequalities</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    solve and graph inequalities, understand inequality notation, solve compound inequalities.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-equations-inequalities" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">34. proportional relationships</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    identify proportional relationships, calculate unit rate, graph proportional relationships.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-ratio-proportion" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">35. probability</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    understand theoretical and experimental probability, calculate compound probabilities.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-probability-statistics" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">36. surface area and volume</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    calculate surface area and volume of 3d shapes including cylinders, cones, and spheres.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-geometry" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 9: Algebra 1 -->
+        <div class="level-section" id="level9">
+            <div class="level-header">
+                <h2>level 9: algebra 1 🧮</h2>
+                <p style="color: var(--gray); font-size: 1.1rem;">ages 13-14 | grade 8</p>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">37. linear functions and slope</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    understand slope-intercept form, graph linear equations, find slope from two points or equation.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:linear-equations-graphs" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">38. systems of equations</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    solve systems by graphing, substitution, and elimination, apply to word problems.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:systems-of-equations" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">39. exponents and radicals</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    work with integer and rational exponents, simplify radicals, understand laws of exponents.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:rational-exponents-radicals" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">40. quadratic expressions</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    multiply binomials, factor quadratic expressions, introduction to solving quadratic equations.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:quadratics-multiplying-factoring" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">41. pythagorean theorem</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    apply pythagorean theorem, calculate distance between points, solve real-world problems.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/cc-eighth-grade-math/cc-8th-geometry" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 10: Geometry & Trigonometry -->
+        <div class="level-section" id="level10">
+            <div class="level-header">
+                <h2>level 10: geometry & trigonometry 📐</h2>
+                <p style="color: var(--gray); font-size: 1.1rem;">ages 14-15 | high school</p>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">42. congruence and similarity</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    understand congruent triangles, prove triangle congruence, work with similar figures and scale factors.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/geometry/hs-geo-congruence" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">43. circles</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    understand circle theorems, calculate arc length and sector area, work with chords and tangents.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/geometry/hs-geo-circles" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">44. right triangle trigonometry</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    learn sine, cosine, and tangent ratios, solve for missing sides and angles in right triangles.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/geometry/hs-geo-trig" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">45. trigonometric functions</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    understand unit circle, graph sine and cosine, work with radians and degrees.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/trigonometry" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">46. geometric proofs</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    write two-column and paragraph proofs, understand logical reasoning in geometry.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/geometry/hs-geo-congruence" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">47. 3d geometry</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    calculate surface area and volume of complex 3d shapes, understand cross-sections.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/geometry/hs-geo-solids" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 11: Algebra 2 & Statistics -->
+        <div class="level-section" id="level11">
+            <div class="level-header">
+                <h2>level 11: algebra 2 & statistics 📊</h2>
+                <p style="color: var(--gray); font-size: 1.1rem;">ages 15-16 | high school</p>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">48. quadratic functions</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    graph parabolas, use quadratic formula, complete the square, vertex and standard form.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:quad-form" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">49. polynomial functions</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    factor and graph polynomials, understand end behavior, find zeros and roots.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:poly-graphs" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">50. exponential functions</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    work with exponential growth and decay, compound interest, graph exponential functions.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:exp" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">51. logarithmic functions</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    understand logarithms as inverse of exponentials, solve logarithmic equations, change of base.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:logs" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">52. rational functions</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    graph rational functions, find asymptotes, simplify rational expressions.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:rational" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">53. probability and statistics</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    understand normal distribution, standard deviation, confidence intervals, hypothesis testing basics.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/statistics-probability" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">54. sequences and series</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    work with arithmetic and geometric sequences, find sums of finite and infinite series.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:series" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 12: Pre-Calculus & Calculus -->
+        <div class="level-section" id="level12">
+            <div class="level-header">
+                <h2>level 12: pre-calculus & calculus ∫</h2>
+                <p style="color: var(--gray); font-size: 1.1rem;">ages 16+ | high school / college</p>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">55. limits and continuity</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    understand the concept of limits, evaluate limits algebraically and graphically, continuity.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/calculus-1/cs1-limits-and-continuity" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">56. derivatives</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    understand derivatives as rates of change, power rule, product and quotient rules, chain rule.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/calculus-1/cs1-derivatives-definition-and-basic-rules" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">57. applications of derivatives</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    use derivatives to find maxima and minima, related rates, optimization problems.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/calculus-1/cs1-derivatives-and-their-properties" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">58. integrals</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    understand indefinite and definite integrals, fundamental theorem of calculus, area under curves.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/calculus-1/cs1-integrals" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">59. differential equations intro</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    introduction to differential equations, separable equations, slope fields.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/ap-calculus-bc/bc-differential-equations-new" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">60. parametric and polar</div>
+                        <div class="course-source">source: khan academy</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    work with parametric equations, polar coordinates, convert between forms.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.khanacademy.org/math/precalculus/x9e81a4f98389efdf:parametric" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Advanced College Level -->
+        <div class="level-section" id="advanced">
+            <div class="level-header">
+                <h2>advanced: college mathematics 🔬</h2>
+                <p style="color: var(--gray); font-size: 1.1rem;">college level | specialized topics</p>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">61. multivariable calculus</div>
+                        <div class="course-source">source: mit opencourseware</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    partial derivatives, multiple integrals, vector calculus, green's and stokes' theorems.
+                </div>
+                <div class="course-actions">
+                    <a href="https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">62. linear algebra</div>
+                        <div class="course-source">source: mit opencourseware</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    matrices, vector spaces, eigenvalues and eigenvectors, applications to data science.
+                </div>
+                <div class="course-actions">
+                    <a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">63. differential equations</div>
+                        <div class="course-source">source: mit opencourseware</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    first and second order odes, laplace transforms, systems of differential equations.
+                </div>
+                <div class="course-actions">
+                    <a href="https://ocw.mit.edu/courses/18-03sc-differential-equations-fall-2011/" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">64. discrete mathematics</div>
+                        <div class="course-source">source: mit opencourseware</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    logic, set theory, combinatorics, graph theory, number theory fundamentals.
+                </div>
+                <div class="course-actions">
+                    <a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">65. real analysis</div>
+                        <div class="course-source">source: mit opencourseware</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    rigorous treatment of limits, continuity, sequences, series, metric spaces.
+                </div>
+                <div class="course-actions">
+                    <a href="https://ocw.mit.edu/courses/18-100a-real-analysis-fall-2020/" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">66. abstract algebra</div>
+                        <div class="course-source">source: mit opencourseware</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    groups, rings, fields, algebraic structures and their properties.
+                </div>
+                <div class="course-actions">
+                    <a href="https://ocw.mit.edu/courses/18-703-modern-algebra-spring-2013/" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">67. probability theory</div>
+                        <div class="course-source">source: mit opencourseware</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    rigorous probability, random variables, distributions, expectation, limit theorems.
+                </div>
+                <div class="course-actions">
+                    <a href="https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">68. mathematical statistics</div>
+                        <div class="course-source">source: mit opencourseware</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    inference, hypothesis testing, regression, maximum likelihood estimation.
+                </div>
+                <div class="course-actions">
+                    <a href="https://ocw.mit.edu/courses/18-650-statistics-for-applications-fall-2016/" class="btn-start" target="_blank">start course</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Stage: Projects & Portfolio -->
+        <div class="level-section" id="portfolio">
+            <div class="level-header">
+                <h2>capstone: projects & mastery 🌟</h2>
+                <p style="color: var(--gray); font-size: 1.1rem;">demonstrate your skills</p>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">69. project euler: problem solving</div>
+                        <div class="course-source">source: project euler</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    solve challenging mathematical and computational problems to sharpen your problem-solving skills.
+                </div>
+                <div class="course-actions">
+                    <a href="https://projecteuler.net/" class="btn-start" target="_blank">start problems</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">70. brilliant.org: advanced problem solving</div>
+                        <div class="course-source">source: brilliant</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    work through advanced mathematics problems across all topics you've learned.
+                </div>
+                <div class="course-actions">
+                    <a href="https://brilliant.org/" class="btn-start" target="_blank">start learning</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">71. amc/aime competition practice</div>
+                        <div class="course-source">source: art of problem solving</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    prepare for mathematics competitions, challenge yourself with olympiad-level problems.
+                </div>
+                <div class="course-actions">
+                    <a href="https://artofproblemsolving.com/community/c13_contests" class="btn-start" target="_blank">start practice</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">72. mathematical research project</div>
+                        <div class="course-source">source: self-guided</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    choose a mathematical topic that interests you and conduct an in-depth research project.
+                </div>
+                <div class="course-actions">
+                    <a href="https://arxiv.org/list/math/recent" class="btn-start" target="_blank">explore topics</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">73. tutoring and teaching</div>
+                        <div class="course-source">source: self-guided</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    solidify your understanding by teaching mathematics to others through tutoring or content creation.
+                </div>
+                <div class="course-actions">
+                    <a href="forum.html" class="btn-start">join forum</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+
+            <div class="course-item">
+                <div class="course-header">
+                    <div>
+                        <div class="course-title">74. graduate school preparation</div>
+                        <div class="course-source">source: gre / admission resources</div>
+                    </div>
+                </div>
+                <div class="course-description">
+                    prepare for graduate studies in mathematics or related fields: gre, research experience, recommendations.
+                </div>
+                <div class="course-actions">
+                    <a href="https://www.ets.org/gre/subject/about/content/mathematics/" class="btn-start" target="_blank">gre math info</a>
+                    <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>navigation</h4>
+                    <a href="index.html">home</a>
+                    <a href="curriculum.html">curriculum</a>
+                    <a href="diagnostic.html">diagnostic</a>
+                    <a href="forum.html">forum</a>
+                </div>
+                <div class="footer-section">
+                    <h4>resources</h4>
+                    <a href="index.html#howitworks">how it works</a>
+                    <a href="index.html#faq">faq</a>
+                    <a href="index.html#testimonials">testimonials</a>
+                </div>
+                <div class="footer-section">
+                    <h4>connect</h4>
+                    <a href="forum.html">join the forum</a>
+                    <a href="mailto:hello@mathexpert.com">email us</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 math expert roadmap. making mathematics accessible to all.</p>
+                <p style="margin-top: 0.5rem;">your progress: <span id="footerProgress">0/74 courses (0%)</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Progress tracking
+        const totalCourses = 74;
+        let completedCourses = 0;
+
+        // Load progress from localStorage
+        function loadProgress() {
+            const saved = localStorage.getItem('mathProgress');
+            if (saved) {
+                const completed = JSON.parse(saved);
+                completed.forEach(index => {
+                    const buttons = document.querySelectorAll('.btn-complete');
+                    if (buttons[index]) {
+                        buttons[index].classList.add('completed');
+                        buttons[index].textContent = '✓ completed';
+                    }
+                });
+                completedCourses = completed.length;
+                updateProgress();
+            }
+        }
+
+        // Toggle complete status
+        function toggleComplete(button) {
+            button.classList.toggle('completed');
+            if (button.classList.contains('completed')) {
+                button.textContent = '✓ completed';
+                completedCourses++;
+            } else {
+                button.textContent = 'mark complete';
+                completedCourses--;
+            }
+            updateProgress();
+            saveProgress();
+        }
+
+        // Update progress display
+        function updateProgress() {
+            const percent = Math.round((completedCourses / totalCourses) * 100);
+            document.getElementById('progressCount').textContent = `${completedCourses}/${totalCourses}`;
+            document.getElementById('progressPercent').textContent = percent;
+            document.getElementById('progressBar').style.width = percent + '%';
+            document.getElementById('footerProgress').textContent = `${completedCourses}/${totalCourses} courses (${percent}%)`;
+        }
+
+        // Save progress to localStorage
+        function saveProgress() {
+            const completed = [];
+            document.querySelectorAll('.btn-complete').forEach((btn, index) => {
+                if (btn.classList.contains('completed')) {
+                    completed.push(index);
+                }
+            });
+            localStorage.setItem('mathProgress', JSON.stringify(completed));
+        }
+
+        // Search functionality
+        document.getElementById('searchBox').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const courses = document.querySelectorAll('.course-item');
+            const sections = document.querySelectorAll('.level-section');
+
+            sections.forEach(section => {
+                let hasVisibleCourse = false;
+                const coursesInSection = section.querySelectorAll('.course-item');
+                
+                coursesInSection.forEach(course => {
+                    const title = course.querySelector('.course-title').textContent.toLowerCase();
+                    const description = course.querySelector('.course-description').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        course.style.display = 'block';
+                        hasVisibleCourse = true;
+                    } else {
+                        course.style.display = 'none';
+                    }
+                });
+
+                section.style.display = hasVisibleCourse ? 'block' : 'none';
+            });
+        });
+
+        // Load progress on page load
+        loadProgress();
+    </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+:root {
+  --math-blue: #2563eb;
+  --math-teal: #0d9488;
+  --math-purple: #7c3aed;
+  --math-orange: #f59e0b;
+  --math-red: #dc2626;
+  --math-green: #16a34a;
+  --bg-light: #f9fafb;
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background: var(--bg-light);
+  color: #111827;
+  text-transform: lowercase;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1100px;
+}
+
+/* ---------- HERO ---------- */
+.hero {
+  padding: 5rem 1rem;
+  text-align: center;
+}
+
+.hero h1 {
+  font-weight: 700;
+  font-size: 3rem;
+  color: var(--math-blue);
+}
+
+.hero p {
+  color: #374151;
+  font-size: 1.2rem;
+}
+
+/* ---------- STAGE HEADER ---------- */
+.stage-header {
+  background: white;
+  border-left: 6px solid var(--math-blue);
+  padding: 1rem 1.25rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  margin-top: 3rem;
+  border-radius: 8px;
+}
+
+.stage-header:hover {
+  transform: translateY(-1px);
+}
+
+/* ---------- COURSE CARD ---------- */
+.course-card {
+  background: white;
+  border-radius: 14px;
+  padding: 1.25rem;
+  height: 100%;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.course-card:hover {
+  transform: translateY(-6px);
+}
+
+.course-title {
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+}
+
+.course-source {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.course-card p {
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+/* ---------- BUTTONS ---------- */
+.btn-start {
+  background: var(--math-blue);
+  color: white;
+  border-radius: 8px;
+  padding: 0.4rem 0.75rem;
+}
+
+.btn-start:hover {
+  background: #1e40af;
+}
+
+.btn-complete {
+  border: 1px solid var(--math-green);
+  color: var(--math-green);
+  border-radius: 8px;
+}
+
+/* ---------- SYMBOL DECORATION ---------- */
+.course-card::after {
+  content: "∑";
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 1.4rem;
+  color: rgba(37,99,235,0.15);
+}
