@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>curriculum | math expert roadmap</title>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
         :root {
             --primary: #FF6B9D;
@@ -332,7 +335,8 @@
                 width: 100%;
             }
 
-            .btn-start, .btn-complete {
+            .btn-start,
+            .btn-complete {
                 width: 100%;
                 text-align: center;
             }
@@ -344,6 +348,7 @@
         }
     </style>
 </head>
+
 <body>
     <nav>
         <div class="container">
@@ -361,7 +366,8 @@
     <div class="header">
         <div class="container">
             <h1>curriculum</h1>
-            <p>follow the levels below to progress from counting to calculus. mark courses as you complete them to track your progress.</p>
+            <p>follow the levels below to progress from counting to calculus. mark courses as you complete them to track
+                your progress.</p>
             <div style="margin-top: 2rem;">
                 <input type="text" id="searchBox" placeholder="🔎 type to filter courses in real time...">
             </div>
@@ -370,7 +376,8 @@
 
     <div class="container">
         <div class="progress-bar">
-            <div class="progress-text">your progress: <span id="progressCount">0/100</span> courses (<span id="progressPercent">0</span>%)</div>
+            <div class="progress-text">your progress: <span id="progressCount">0/100</span> courses (<span
+                    id="progressPercent">0</span>%)</div>
             <div class="progress-fill-container">
                 <div class="progress-fill" id="progressBar"></div>
             </div>
@@ -393,10 +400,12 @@
                     </div>
                 </div>
                 <div class="course-description">
-                    learn to count to 100, recognize numbers, compare quantities, and understand one-to-one correspondence.
+                    learn to count to 100, recognize numbers, compare quantities, and understand one-to-one
+                    correspondence.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/early-math#cc-kindergarten-counting" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/early-math#cc-kindergarten-counting" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -409,10 +418,12 @@
                     </div>
                 </div>
                 <div class="course-description">
-                    identify and describe basic 2d and 3d shapes: circles, squares, triangles, rectangles, spheres, cubes.
+                    identify and describe basic 2d and 3d shapes: circles, squares, triangles, rectangles, spheres,
+                    cubes.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/early-math#cc-kindergarten-geometry" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/early-math#cc-kindergarten-geometry" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -428,7 +439,8 @@
                     compare numbers and quantities, sort objects by attributes, and recognize patterns.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.mathplayground.com/kindergarten_games.html" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.mathplayground.com/kindergarten_games.html" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -452,7 +464,8 @@
                     master addition facts within 20, understand addition as combining, use strategies like making 10.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-1st-grade-math/cc-1st-addition-subtraction" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-1st-grade-math/cc-1st-addition-subtraction"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -468,7 +481,8 @@
                     understand subtraction as taking away, learn subtraction facts, solve word problems.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-1st-grade-math/cc-1st-addition-subtraction" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-1st-grade-math/cc-1st-addition-subtraction"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -484,7 +498,8 @@
                     understand place value for two-digit numbers, count by tens, compose and decompose numbers.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-1st-grade-math/cc-1st-place-value" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-1st-grade-math/cc-1st-place-value" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -500,7 +515,8 @@
                     compare lengths, tell time to the hour and half-hour, understand basic measurement concepts.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-1st-grade-math/cc-1st-measurement-data" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-1st-grade-math/cc-1st-measurement-data"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -524,7 +540,8 @@
                     fluently add and subtract within 100, use place value strategies, solve multi-step word problems.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-2nd-grade-math/cc-2nd-add-subtract-100" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-2nd-grade-math/cc-2nd-add-subtract-100"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -540,7 +557,8 @@
                     skip count by 2s, 5s, and 10s. understand arrays as introduction to multiplication.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-2nd-grade-math#cc-2nd-add-subtract-1000" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-2nd-grade-math#cc-2nd-add-subtract-1000"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -556,7 +574,8 @@
                     understand three-digit numbers, hundreds place, compare and order numbers to 1000.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-2nd-grade-math/cc-2nd-place-value" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-2nd-grade-math/cc-2nd-place-value" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -596,7 +615,8 @@
                     learn multiplication tables through 10, understand multiplication as repeated addition and arrays.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-third-grade-math/imp-multiplication-and-division" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-third-grade-math/imp-multiplication-and-division"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -609,10 +629,12 @@
                     </div>
                 </div>
                 <div class="course-description">
-                    understand division as sharing and grouping, relate division to multiplication, solve division word problems.
+                    understand division as sharing and grouping, relate division to multiplication, solve division word
+                    problems.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-third-grade-math/imp-multiplication-and-division" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-third-grade-math/imp-multiplication-and-division"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -628,7 +650,8 @@
                     understand fractions as parts of a whole, identify unit fractions, compare simple fractions.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-third-grade-math/imp-fractions" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-third-grade-math/imp-fractions" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -644,7 +667,8 @@
                     calculate area and perimeter of rectangles, understand square units, solve real-world problems.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-third-grade-math/imp-geometry" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-third-grade-math/imp-geometry" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -665,10 +689,12 @@
                     </div>
                 </div>
                 <div class="course-description">
-                    generate equivalent fractions, compare fractions with different denominators, understand fraction equivalence.
+                    generate equivalent fractions, compare fractions with different denominators, understand fraction
+                    equivalence.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-fourth-grade-math/imp-fractions" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-fourth-grade-math/imp-fractions" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -684,7 +710,8 @@
                     understand decimals as fractions, read and write decimals, compare decimal numbers.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-fourth-grade-math/imp-decimals" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-fourth-grade-math/imp-decimals" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -700,7 +727,8 @@
                     multiply multi-digit numbers using standard algorithm, understand distributive property.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-fourth-grade-math/imp-multiplication-and-division-2" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-fourth-grade-math/imp-multiplication-and-division-2"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -716,7 +744,8 @@
                     divide multi-digit numbers by one-digit divisors, understand remainders, interpret quotients.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-fourth-grade-math/imp-multiplication-and-division-2" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-fourth-grade-math/imp-multiplication-and-division-2"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -732,7 +761,8 @@
                     understand angles, measure angles with protractor, identify types of angles and triangles.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-fourth-grade-math/plane-figures" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-fourth-grade-math/plane-figures" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -756,7 +786,8 @@
                     add and subtract fractions with unlike denominators, find common denominators, simplify results.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-fifth-grade-math/add-subtract-fractions" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-fifth-grade-math/add-subtract-fractions"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -769,10 +800,12 @@
                     </div>
                 </div>
                 <div class="course-description">
-                    multiply fractions and mixed numbers, understand fraction multiplication visually and algorithmically.
+                    multiply fractions and mixed numbers, understand fraction multiplication visually and
+                    algorithmically.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-fifth-grade-math/multiply-fractions" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-fifth-grade-math/multiply-fractions" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -788,7 +821,8 @@
                     divide fractions by fractions, understand why we "flip and multiply", solve division word problems.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-fifth-grade-math/divide-fractions" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-fifth-grade-math/divide-fractions" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -804,7 +838,8 @@
                     add, subtract, multiply, and divide decimals, understand decimal place value in operations.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-fifth-grade-math/cc-5th-decimals-topic" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-fifth-grade-math/cc-5th-decimals-topic"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -820,7 +855,8 @@
                     understand volume as packing with unit cubes, calculate volume of rectangular prisms.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-fifth-grade-math/5th-measurement-and-geometry" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-fifth-grade-math/5th-measurement-and-geometry"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -836,7 +872,8 @@
                     plot points on the coordinate plane, understand x and y axes, graph simple relationships.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-fifth-grade-math/cc-5th-geometry-topic" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-fifth-grade-math/cc-5th-geometry-topic"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -860,7 +897,8 @@
                     understand ratios, write equivalent ratios, solve proportion problems, work with rates.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-ratios-and-rates" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-ratios-and-rates"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -873,10 +911,12 @@
                     </div>
                 </div>
                 <div class="course-description">
-                    convert between fractions, decimals, and percents, solve percent problems, calculate discounts and tax.
+                    convert between fractions, decimals, and percents, solve percent problems, calculate discounts and
+                    tax.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-rates-and-percentages" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-rates-and-percentages"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -892,7 +932,8 @@
                     understand negative numbers on number line, add and subtract integers, absolute value.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-negative-number-topic" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-negative-number-topic"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -908,7 +949,8 @@
                     write and evaluate algebraic expressions, understand variables, solve one-step equations.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-expressions-and-variables" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-expressions-and-variables"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -924,7 +966,8 @@
                     calculate mean, median, mode, and range, create and interpret histograms and box plots.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-data-statistics" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-data-statistics"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -948,7 +991,8 @@
                     solve multi-step equations, equations with variables on both sides, applications of equations.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-equations-inequalities" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-equations-inequalities"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -964,7 +1008,8 @@
                     solve and graph inequalities, understand inequality notation, solve compound inequalities.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-equations-inequalities" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-equations-inequalities"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -980,7 +1025,8 @@
                     identify proportional relationships, calculate unit rate, graph proportional relationships.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-ratio-proportion" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-ratio-proportion"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -996,7 +1042,8 @@
                     understand theoretical and experimental probability, calculate compound probabilities.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-probability-statistics" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-probability-statistics"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1012,7 +1059,8 @@
                     calculate surface area and volume of 3d shapes including cylinders, cones, and spheres.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-geometry" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-geometry" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1036,7 +1084,8 @@
                     understand slope-intercept form, graph linear equations, find slope from two points or equation.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:linear-equations-graphs" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:linear-equations-graphs"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1052,7 +1101,8 @@
                     solve systems by graphing, substitution, and elimination, apply to word problems.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:systems-of-equations" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:systems-of-equations"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1068,7 +1118,8 @@
                     work with integer and rational exponents, simplify radicals, understand laws of exponents.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:rational-exponents-radicals" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:rational-exponents-radicals"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1084,7 +1135,8 @@
                     multiply binomials, factor quadratic expressions, introduction to solving quadratic equations.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:quadratics-multiplying-factoring" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:quadratics-multiplying-factoring"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1100,7 +1152,8 @@
                     apply pythagorean theorem, calculate distance between points, solve real-world problems.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/cc-eighth-grade-math/cc-8th-geometry" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/cc-eighth-grade-math/cc-8th-geometry" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1121,10 +1174,12 @@
                     </div>
                 </div>
                 <div class="course-description">
-                    understand congruent triangles, prove triangle congruence, work with similar figures and scale factors.
+                    understand congruent triangles, prove triangle congruence, work with similar figures and scale
+                    factors.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/geometry/hs-geo-congruence" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/geometry/hs-geo-congruence" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1140,7 +1195,8 @@
                     understand circle theorems, calculate arc length and sector area, work with chords and tangents.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/geometry/hs-geo-circles" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/geometry/hs-geo-circles" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1156,7 +1212,8 @@
                     learn sine, cosine, and tangent ratios, solve for missing sides and angles in right triangles.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/geometry/hs-geo-trig" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/geometry/hs-geo-trig" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1172,7 +1229,8 @@
                     understand unit circle, graph sine and cosine, work with radians and degrees.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/trigonometry" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/trigonometry" class="btn-start" target="_blank">start
+                        course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1188,7 +1246,8 @@
                     write two-column and paragraph proofs, understand logical reasoning in geometry.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/geometry/hs-geo-congruence" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/geometry/hs-geo-congruence" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1204,7 +1263,8 @@
                     calculate surface area and volume of complex 3d shapes, understand cross-sections.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/geometry/hs-geo-solids" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/geometry/hs-geo-solids" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1228,7 +1288,8 @@
                     graph parabolas, use quadratic formula, complete the square, vertex and standard form.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:quad-form" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:quad-form" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1244,7 +1305,8 @@
                     factor and graph polynomials, understand end behavior, find zeros and roots.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:poly-graphs" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:poly-graphs" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1260,7 +1322,8 @@
                     work with exponential growth and decay, compound interest, graph exponential functions.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:exp" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:exp" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1276,7 +1339,8 @@
                     understand logarithms as inverse of exponentials, solve logarithmic equations, change of base.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:logs" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:logs" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1292,7 +1356,8 @@
                     graph rational functions, find asymptotes, simplify rational expressions.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:rational" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:rational" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1308,7 +1373,8 @@
                     understand normal distribution, standard deviation, confidence intervals, hypothesis testing basics.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/statistics-probability" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/statistics-probability" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1324,7 +1390,8 @@
                     work with arithmetic and geometric sequences, find sums of finite and infinite series.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:series" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:series" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1348,7 +1415,8 @@
                     understand the concept of limits, evaluate limits algebraically and graphically, continuity.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/calculus-1/cs1-limits-and-continuity" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/calculus-1/cs1-limits-and-continuity" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1364,7 +1432,8 @@
                     understand derivatives as rates of change, power rule, product and quotient rules, chain rule.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/calculus-1/cs1-derivatives-definition-and-basic-rules" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/calculus-1/cs1-derivatives-definition-and-basic-rules"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1380,7 +1449,8 @@
                     use derivatives to find maxima and minima, related rates, optimization problems.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/calculus-1/cs1-derivatives-and-their-properties" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/calculus-1/cs1-derivatives-and-their-properties"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1396,7 +1466,8 @@
                     understand indefinite and definite integrals, fundamental theorem of calculus, area under curves.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/calculus-1/cs1-integrals" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/calculus-1/cs1-integrals" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1412,7 +1483,8 @@
                     introduction to differential equations, separable equations, slope fields.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/ap-calculus-bc/bc-differential-equations-new" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/ap-calculus-bc/bc-differential-equations-new"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1428,7 +1500,8 @@
                     work with parametric equations, polar coordinates, convert between forms.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.khanacademy.org/math/precalculus/x9e81a4f98389efdf:parametric" class="btn-start" target="_blank">start course</a>
+                    <a href="https://www.khanacademy.org/math/precalculus/x9e81a4f98389efdf:parametric"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1452,7 +1525,8 @@
                     partial derivatives, multiple integrals, vector calculus, green's and stokes' theorems.
                 </div>
                 <div class="course-actions">
-                    <a href="https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/" class="btn-start" target="_blank">start course</a>
+                    <a href="https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1468,7 +1542,8 @@
                     matrices, vector spaces, eigenvalues and eigenvectors, applications to data science.
                 </div>
                 <div class="course-actions">
-                    <a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/" class="btn-start" target="_blank">start course</a>
+                    <a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1484,7 +1559,8 @@
                     first and second order odes, laplace transforms, systems of differential equations.
                 </div>
                 <div class="course-actions">
-                    <a href="https://ocw.mit.edu/courses/18-03sc-differential-equations-fall-2011/" class="btn-start" target="_blank">start course</a>
+                    <a href="https://ocw.mit.edu/courses/18-03sc-differential-equations-fall-2011/" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1500,7 +1576,8 @@
                     logic, set theory, combinatorics, graph theory, number theory fundamentals.
                 </div>
                 <div class="course-actions">
-                    <a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/" class="btn-start" target="_blank">start course</a>
+                    <a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1516,7 +1593,8 @@
                     rigorous treatment of limits, continuity, sequences, series, metric spaces.
                 </div>
                 <div class="course-actions">
-                    <a href="https://ocw.mit.edu/courses/18-100a-real-analysis-fall-2020/" class="btn-start" target="_blank">start course</a>
+                    <a href="https://ocw.mit.edu/courses/18-100a-real-analysis-fall-2020/" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1532,7 +1610,8 @@
                     groups, rings, fields, algebraic structures and their properties.
                 </div>
                 <div class="course-actions">
-                    <a href="https://ocw.mit.edu/courses/18-703-modern-algebra-spring-2013/" class="btn-start" target="_blank">start course</a>
+                    <a href="https://ocw.mit.edu/courses/18-703-modern-algebra-spring-2013/" class="btn-start"
+                        target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1548,7 +1627,8 @@
                     rigorous probability, random variables, distributions, expectation, limit theorems.
                 </div>
                 <div class="course-actions">
-                    <a href="https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/" class="btn-start" target="_blank">start course</a>
+                    <a href="https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1564,7 +1644,8 @@
                     inference, hypothesis testing, regression, maximum likelihood estimation.
                 </div>
                 <div class="course-actions">
-                    <a href="https://ocw.mit.edu/courses/18-650-statistics-for-applications-fall-2016/" class="btn-start" target="_blank">start course</a>
+                    <a href="https://ocw.mit.edu/courses/18-650-statistics-for-applications-fall-2016/"
+                        class="btn-start" target="_blank">start course</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1620,7 +1701,8 @@
                     prepare for mathematics competitions, challenge yourself with olympiad-level problems.
                 </div>
                 <div class="course-actions">
-                    <a href="https://artofproblemsolving.com/community/c13_contests" class="btn-start" target="_blank">start practice</a>
+                    <a href="https://artofproblemsolving.com/community/c13_contests" class="btn-start"
+                        target="_blank">start practice</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1665,10 +1747,12 @@
                     </div>
                 </div>
                 <div class="course-description">
-                    prepare for graduate studies in mathematics or related fields: gre, research experience, recommendations.
+                    prepare for graduate studies in mathematics or related fields: gre, research experience,
+                    recommendations.
                 </div>
                 <div class="course-actions">
-                    <a href="https://www.ets.org/gre/subject/about/content/mathematics/" class="btn-start" target="_blank">gre math info</a>
+                    <a href="https://www.ets.org/gre/subject/about/content/mathematics/" class="btn-start"
+                        target="_blank">gre math info</a>
                     <button class="btn-complete" onclick="toggleComplete(this)">mark complete</button>
                 </div>
             </div>
@@ -1761,7 +1845,7 @@
         }
 
         // Search functionality
-        document.getElementById('searchBox').addEventListener('input', function(e) {
+        document.getElementById('searchBox').addEventListener('input', function (e) {
             const searchTerm = e.target.value.toLowerCase();
             const courses = document.querySelectorAll('.course-item');
             const sections = document.querySelectorAll('.level-section');
@@ -1769,11 +1853,11 @@
             sections.forEach(section => {
                 let hasVisibleCourse = false;
                 const coursesInSection = section.querySelectorAll('.course-item');
-                
+
                 coursesInSection.forEach(course => {
                     const title = course.querySelector('.course-title').textContent.toLowerCase();
                     const description = course.querySelector('.course-description').textContent.toLowerCase();
-                    
+
                     if (title.includes(searchTerm) || description.includes(searchTerm)) {
                         course.style.display = 'block';
                         hasVisibleCourse = true;
@@ -1790,4 +1874,5 @@
         loadProgress();
     </script>
 </body>
+
 </html>

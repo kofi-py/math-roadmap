@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>diagnostic test | math expert roadmap</title>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
         :root {
             --primary: #FF6B9D;
@@ -161,6 +164,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -376,6 +380,7 @@
         }
     </style>
 </head>
+
 <body>
     <nav>
         <div class="container">
@@ -393,7 +398,8 @@
     <div class="header">
         <div class="container">
             <h1>find your math level</h1>
-            <p>answer these questions to discover your current math level and get personalized curriculum recommendations</p>
+            <p>answer these questions to discover your current math level and get personalized curriculum
+                recommendations</p>
         </div>
     </div>
 
@@ -406,7 +412,7 @@
             <!-- Question 1 -->
             <div class="question-section active" data-question="1">
                 <div class="question-number">question 1 of 10</div>
-                <div class="question-text">what is 7 + 8?</div>
+                <div class="question-text">what is \( 7 + 8 \)?</div>
                 <div class="options">
                     <div class="option" data-level="1" data-answer="wrong">13</div>
                     <div class="option" data-level="1" data-answer="correct">15</div>
@@ -430,11 +436,11 @@
             <!-- Question 3 -->
             <div class="question-section" data-question="3">
                 <div class="question-number">question 3 of 10</div>
-                <div class="question-text">what is 1/2 + 1/4?</div>
+                <div class="question-text">what is \( 1/2 + 1/4 \)?</div>
                 <div class="options">
-                    <div class="option" data-level="4" data-answer="wrong">2/6</div>
-                    <div class="option" data-level="4" data-answer="correct">3/4</div>
-                    <div class="option" data-level="4" data-answer="wrong">1/3</div>
+                    <div class="option" data-level="4" data-answer="wrong">\( 2/6 \)</div>
+                    <div class="option" data-level="4" data-answer="correct">\( 3/4 \)</div>
+                    <div class="option" data-level="4" data-answer="wrong">\( 1/3 \)</div>
                     <div class="option" data-level="4" data-answer="wrong">i'm not sure</div>
                 </div>
             </div>
@@ -442,7 +448,7 @@
             <!-- Question 4 -->
             <div class="question-section" data-question="4">
                 <div class="question-number">question 4 of 10</div>
-                <div class="question-text">what is 0.5 × 0.4?</div>
+                <div class="question-text">what is \( 0.5 \times 0.4 \)?</div>
                 <div class="options">
                     <div class="option" data-level="5" data-answer="wrong">0.9</div>
                     <div class="option" data-level="5" data-answer="correct">0.2</div>
@@ -466,11 +472,11 @@
             <!-- Question 6 -->
             <div class="question-section" data-question="6">
                 <div class="question-number">question 6 of 10</div>
-                <div class="question-text">solve for x: 2x + 5 = 13</div>
+                <div class="question-text">solve for \( x \): \( 2x + 5 = 13 \)</div>
                 <div class="options">
-                    <div class="option" data-level="7" data-answer="wrong">x = 3</div>
-                    <div class="option" data-level="7" data-answer="correct">x = 4</div>
-                    <div class="option" data-level="7" data-answer="wrong">x = 9</div>
+                    <div class="option" data-level="7" data-answer="wrong">\( x = 3 \)</div>
+                    <div class="option" data-level="7" data-answer="correct">\( x = 4 \)</div>
+                    <div class="option" data-level="7" data-answer="wrong">\( x = 9 \)</div>
                     <div class="option" data-level="7" data-answer="wrong">i'm not sure</div>
                 </div>
             </div>
@@ -478,7 +484,7 @@
             <!-- Question 7 -->
             <div class="question-section" data-question="7">
                 <div class="question-number">question 7 of 10</div>
-                <div class="question-text">what is the slope of the line y = 3x - 2?</div>
+                <div class="question-text">what is the slope of the line \( y = 3x - 2 \)?</div>
                 <div class="options">
                     <div class="option" data-level="8" data-answer="wrong">-2</div>
                     <div class="option" data-level="8" data-answer="correct">3</div>
@@ -490,11 +496,11 @@
             <!-- Question 8 -->
             <div class="question-section" data-question="8">
                 <div class="question-number">question 8 of 10</div>
-                <div class="question-text">what is x² - 5x + 6 factored?</div>
+                <div class="question-text">what is \( x^2 - 5x + 6 \) factored?</div>
                 <div class="options">
-                    <div class="option" data-level="9" data-answer="wrong">(x - 1)(x - 6)</div>
-                    <div class="option" data-level="9" data-answer="correct">(x - 2)(x - 3)</div>
-                    <div class="option" data-level="9" data-answer="wrong">(x + 2)(x + 3)</div>
+                    <div class="option" data-level="9" data-answer="wrong">\( (x - 1)(x - 6) \)</div>
+                    <div class="option" data-level="9" data-answer="correct">\( (x - 2)(x - 3) \)</div>
+                    <div class="option" data-level="9" data-answer="wrong">\( (x + 2)(x + 3) \)</div>
                     <div class="option" data-level="9" data-answer="wrong">i'm not sure</div>
                 </div>
             </div>
@@ -502,10 +508,10 @@
             <!-- Question 9 -->
             <div class="question-section" data-question="9">
                 <div class="question-number">question 9 of 10</div>
-                <div class="question-text">what is sin(30°)?</div>
+                <div class="question-text">what is \( \sin(30^\circ) \)?</div>
                 <div class="options">
-                    <div class="option" data-level="10" data-answer="correct">1/2</div>
-                    <div class="option" data-level="10" data-answer="wrong">√3/2</div>
+                    <div class="option" data-level="10" data-answer="correct">\( 1/2 \)</div>
+                    <div class="option" data-level="10" data-answer="wrong">\( \sqrt{3}/2 \)</div>
                     <div class="option" data-level="10" data-answer="wrong">1</div>
                     <div class="option" data-level="10" data-answer="wrong">i'm not sure</div>
                 </div>
@@ -514,11 +520,11 @@
             <!-- Question 10 -->
             <div class="question-section" data-question="10">
                 <div class="question-number">question 10 of 10</div>
-                <div class="question-text">what is the derivative of x³?</div>
+                <div class="question-text">what is the derivative of \( x^3 \)?</div>
                 <div class="options">
-                    <div class="option" data-level="12" data-answer="wrong">x²</div>
-                    <div class="option" data-level="12" data-answer="correct">3x²</div>
-                    <div class="option" data-level="12" data-answer="wrong">3x³</div>
+                    <div class="option" data-level="12" data-answer="wrong">\( x^2 \)</div>
+                    <div class="option" data-level="12" data-answer="correct">\( 3x^2 \)</div>
+                    <div class="option" data-level="12" data-answer="wrong">\( 3x^3 \)</div>
                     <div class="option" data-level="12" data-answer="wrong">i'm not sure</div>
                 </div>
             </div>
@@ -658,7 +664,7 @@
 
         // Handle option selection
         document.querySelectorAll('.option').forEach(option => {
-            option.addEventListener('click', function() {
+            option.addEventListener('click', function () {
                 const questionSection = this.closest('.question-section');
                 questionSection.querySelectorAll('.option').forEach(opt => {
                     opt.classList.remove('selected');
@@ -685,14 +691,14 @@
             if (currentQuestion < totalQuestions) {
                 // Hide current question
                 document.querySelector(`.question-section[data-question="${currentQuestion}"]`).classList.remove('active');
-                
+
                 // Show next question
                 currentQuestion++;
                 document.querySelector(`.question-section[data-question="${currentQuestion}"]`).classList.add('active');
-                
+
                 // Update progress
                 updateProgress();
-                
+
                 // Reset selection
                 selectedOption = null;
                 document.getElementById('nextBtn').disabled = true;
@@ -709,12 +715,12 @@
                 currentQuestion--;
                 document.querySelector(`.question-section[data-question="${currentQuestion}"]`).classList.add('active');
                 updateProgress();
-                
+
                 // Remove last answer
                 answers.pop();
                 selectedOption = null;
                 document.getElementById('nextBtn').disabled = true;
-                
+
                 if (currentQuestion === 1) {
                     document.getElementById('prevBtn').disabled = true;
                 }
@@ -724,11 +730,11 @@
         function showResults() {
             // Hide navigation buttons
             document.getElementById('navButtons').style.display = 'none';
-            
+
             // Calculate recommended level
             let recommendedLevel = 1;
             let correctCount = 0;
-            
+
             for (let i = 0; i < answers.length; i++) {
                 if (answers[i].correct) {
                     correctCount++;
@@ -738,12 +744,12 @@
                     break;
                 }
             }
-            
+
             // If they got less than 5 correct, recommend starting lower
             if (correctCount < 5) {
                 recommendedLevel = Math.max(1, Math.floor(recommendedLevel / 2));
             }
-            
+
             // Display results
             const info = levelInfo[recommendedLevel];
             document.getElementById('levelBadge').textContent = `level ${recommendedLevel}`;
@@ -751,7 +757,7 @@
             document.getElementById('recommendationText').textContent = info.description;
             document.getElementById('topicsText').textContent = info.topics;
             document.getElementById('curriculumLink').href = `curriculum.html${info.link}`;
-            
+
             document.getElementById('results').classList.add('active');
         }
 
@@ -759,4 +765,5 @@
         updateProgress();
     </script>
 </body>
+
 </html>

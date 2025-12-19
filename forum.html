@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>community forum | math expert roadmap</title>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
         :root {
             --primary: #FF6B9D;
@@ -173,7 +179,8 @@
             border-left: 3px solid transparent;
         }
 
-        .category:hover, .category.active {
+        .category:hover,
+        .category.active {
             border-left-color: var(--primary);
             transform: translateX(5px);
         }
@@ -352,9 +359,269 @@
                 flex-wrap: wrap;
                 gap: 1rem;
             }
+
+            nav ul {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            /* Allow scrolling on small screens */
+            overflow-y: auto;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            animation: slideUp 0.3s ease;
+        }
+
+        .math-toggle-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            border: 2px dashed #ccc;
+            border-radius: 12px;
+            color: var(--gray);
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .math-toggle-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(255, 107, 157, 0.05);
+        }
+
+        .math-toggle-btn.active {
+            border-style: solid;
+            border-color: var(--primary);
+            color: var(--primary);
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-bottom: none;
+            background: rgba(255, 107, 157, 0.05);
+        }
+
+        .toggle-arrow {
+            transition: transform 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .math-toggle-btn.active .toggle-arrow {
+            transform: rotate(180deg);
+        }
+
+        #mathEditorContainer {
+            border: 2px solid var(--primary);
+            border-top: none;
+            border-radius: 12px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            padding: 1.5rem;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            animation: expandOpen 0.4s ease forwards;
+        }
+
+        @keyframes expandOpen {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        #math-field {
+            width: 100%;
+            min-height: 150px;
+            padding: 1rem;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            background: white;
+            font-size: 1.1rem;
+        }
+
+        .math-toggle-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            border: 2px dashed #ccc;
+            border-radius: 12px;
+            color: var(--gray);
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .math-toggle-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(255, 107, 157, 0.05);
+        }
+
+        .math-toggle-btn.active {
+            border-style: solid;
+            border-color: var(--primary);
+            color: var(--primary);
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-bottom: none;
+            background: rgba(255, 107, 157, 0.05);
+        }
+
+        .toggle-arrow {
+            transition: transform 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .math-toggle-btn.active .toggle-arrow {
+            transform: rotate(180deg);
+        }
+
+        #mathEditorContainer {
+            border: 2px solid var(--primary);
+            border-top: none;
+            border-radius: 12px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            padding: 1.5rem;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            animation: expandOpen 0.4s ease forwards;
+        }
+
+        @keyframes expandOpen {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Button Styles */
+        .btn {
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--gray);
+            border: 2px solid #eee;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 2rem;
         }
     </style>
 </head>
+
 <body>
     <nav>
         <div class="container">
@@ -372,8 +639,65 @@
     <div class="header">
         <div class="container">
             <h1>community forum</h1>
-            <p>connect with fellow learners, ask questions, share insights, and celebrate your mathematical journey together</p>
-            <button class="new-post-btn" onclick="alert('Post creation feature coming soon! Join our Discord for now.')">✏️ new post</button>
+            <p>connect with fellow learners, ask questions, share insights, and celebrate your mathematical journey
+                together</p>
+            <button class="new-post-btn" onclick="openModal()">✏️ new post</button>
+        </div>
+    </div>
+
+    <!-- Create Post Modal -->
+    <div class="modal-overlay" id="postModal">
+        <div class="modal">
+            <h2 style="margin-bottom: 1.5rem; color: var(--primary);">ask a question</h2>
+            <div class="form-group">
+                <label class="form-label">title</label>
+                <input type="text" id="postTitle" class="form-input" placeholder="e.g. need help with calculus limits">
+            </div>
+            <div class="form-group">
+                <label class="form-label">category</label>
+                <select id="postCategory" class="form-select">
+                    <option value="help">homework help</option>
+                    <option value="concepts">concept explanations</option>
+                    <option value="resources">resource sharing</option>
+                    <option value="success">success stories</option>
+                    <option value="study">study groups</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">your question</label>
+                <textarea id="postBody" class="form-input"
+                    style="min-height: 150px; font-family: inherit; margin-bottom: 1rem; resize: vertical;"
+                    placeholder="type your question here... use the button below to add math formulas."></textarea>
+
+                <button type="button" id="mathToggleBtn" class="math-toggle-btn" onclick="toggleMathEditor()">
+                    <span>➕ add math formula</span>
+                    <span class="toggle-arrow">▼</span>
+                </button>
+
+                <div id="mathEditorContainer" style="display: none;">
+                    <p style="font-size: 0.9rem; color: var(--gray); margin-bottom: 0.8rem;">
+                        type your equation below using latex syntax (e.g. \sqrt{x}). click insert when done.
+                    </p>
+                    <div id="math-field"
+                        style="background: white; border: 1px solid #ccc; min-height: 60px; margin-bottom: 1rem; border-radius: 8px; font-size: 1.2rem; padding: 10px;">
+                    </div>
+                    <div style="display: flex; justify-content: flex-end; gap: 0.5rem; align-items: center;">
+                        <span style="font-size: 0.8rem; color: var(--gray); margin-right: auto;">preview shown
+                            above</span>
+                        <button type="button" class="btn btn-primary" onclick="insertMath()">
+                            insert into post
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">tags (comma separated)</label>
+                <input type="text" id="postTags" class="form-input" placeholder="algebra, polynomials, level 9">
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="closeModal()">cancel</button>
+                <button class="btn btn-primary" onclick="submitPost()">post question</button>
+            </div>
         </div>
     </div>
 
@@ -407,7 +731,9 @@
                 </div>
             </aside>
 
-            <main class="main-content">
+            <main class="main-content" id="postsContainer">
+                <!-- User posts will be prepended here -->
+
                 <!-- Sample Forum Posts -->
                 <div class="post-card" data-category="help">
                     <div class="post-header">
@@ -421,7 +747,9 @@
                         </div>
                     </div>
                     <div class="post-excerpt">
-                        i keep making mistakes when applying the quadratic formula. i understand the concept but struggle with the arithmetic, especially with negative numbers under the square root. does anyone have memorization tricks or practice resources?
+                        i keep making mistakes when applying the quadratic formula. i understand the concept but
+                        struggle with the arithmetic, especially with negative numbers under the square root. does
+                        anyone have memorization tricks or practice resources?
                     </div>
                     <div class="post-tags">
                         <span class="tag level">level 9: algebra</span>
@@ -451,7 +779,9 @@
                         </div>
                     </div>
                     <div class="post-excerpt">
-                        after weeks of confusion, derivatives finally clicked! the key was visualizing them as slopes of tangent lines rather than just memorizing formulas. khan academy's interactive graphs helped so much. keep pushing through the tough topics!
+                        after weeks of confusion, derivatives finally clicked! the key was visualizing them as slopes of
+                        tangent lines rather than just memorizing formulas. khan academy's interactive graphs helped so
+                        much. keep pushing through the tough topics!
                     </div>
                     <div class="post-tags">
                         <span class="tag level">level 12: calculus</span>
@@ -481,7 +811,9 @@
                         </div>
                     </div>
                     <div class="post-excerpt">
-                        looking for youtube channels that explain geometry proofs really well. khan academy is great but i need multiple perspectives. especially interested in channels that show visual proofs and real-world applications.
+                        looking for youtube channels that explain geometry proofs really well. khan academy is great but
+                        i need multiple perspectives. especially interested in channels that show visual proofs and
+                        real-world applications.
                     </div>
                     <div class="post-tags">
                         <span class="tag level">level 10: geometry</span>
@@ -511,7 +843,8 @@
                         </div>
                     </div>
                     <div class="post-excerpt">
-                        i'm in algebra 2 and we just started complex numbers. i understand that i = √(-1), but i don't get WHY we need them or what they actually represent. can someone explain this in simple terms?
+                        i'm in algebra 2 and we just started complex numbers. i understand that i = √(-1), but i don't
+                        get WHY we need them or what they actually represent. can someone explain this in simple terms?
                     </div>
                     <div class="post-tags">
                         <span class="tag level">level 11: algebra 2</span>
@@ -541,7 +874,9 @@
                         </div>
                     </div>
                     <div class="post-excerpt">
-                        looking for 3-5 people to form a virtual study group for trigonometry. planning to meet sundays at 3pm EST on zoom. we'll work through practice problems together and explain concepts to each other. dm me if interested!
+                        looking for 3-5 people to form a virtual study group for trigonometry. planning to meet sundays
+                        at 3pm EST on zoom. we'll work through practice problems together and explain concepts to each
+                        other. dm me if interested!
                     </div>
                     <div class="post-tags">
                         <span class="tag level">level 10: trigonometry</span>
@@ -571,7 +906,9 @@
                         </div>
                     </div>
                     <div class="post-excerpt">
-                        my 5th grader asked me why we flip the second fraction and multiply when dividing fractions. i showed her the rule but she wants to understand WHY it works. how can i explain this intuitively?
+                        my 5th grader asked me why we flip the second fraction and multiply when dividing fractions. i
+                        showed her the rule but she wants to understand WHY it works. how can i explain this
+                        intuitively?
                     </div>
                     <div class="post-tags">
                         <span class="tag level">level 6: fractions</span>
@@ -601,7 +938,9 @@
                         </div>
                     </div>
                     <div class="post-excerpt">
-                        two years ago i failed algebra 1. today i got an A on my calculus midterm. this curriculum and community saved my relationship with math. here's what worked for me: consistent daily practice, asking questions without shame, and celebrating small wins...
+                        two years ago i failed algebra 1. today i got an A on my calculus midterm. this curriculum and
+                        community saved my relationship with math. here's what worked for me: consistent daily practice,
+                        asking questions without shame, and celebrating small wins...
                     </div>
                     <div class="post-tags">
                         <span class="tag">success story</span>
@@ -656,10 +995,10 @@
             document.querySelectorAll('.category').forEach(cat => {
                 cat.classList.remove('active');
             });
-            
+
             // Add active class to clicked category
             event.target.closest('.category').classList.add('active');
-            
+
             // Show/hide posts based on category
             const posts = document.querySelectorAll('.post-card');
             posts.forEach(post => {
@@ -674,6 +1013,177 @@
                 }
             });
         }
+
+        // MathQuill Initialization
+        var MQ = MathQuill.getInterface(2);
+        var mathFieldSpan = document.getElementById('math-field');
+        var mathField = MQ.MathField(mathFieldSpan, {
+            spaceBehavesLikeTab: true,
+            handlers: {
+                edit: function () {
+                    // enter logic here if needed
+                }
+            }
+        });
+
+        // Load posts from localStorage on start
+        window.addEventListener('DOMContentLoaded', () => {
+            loadPosts();
+
+            // Add click handlers to existing static posts
+            document.querySelectorAll('.post-card').forEach((card, index) => {
+                if (!card.getAttribute('onclick')) {
+                    card.addEventListener('click', function () {
+                        // Static post simulation
+                        const title = this.querySelector('.post-title').innerText;
+                        const author = this.querySelector('.post-author').innerText;
+                        const body = this.querySelector('.post-excerpt').innerText;
+                        // Handle tags safely
+                        let tags = "";
+                        const tagsContainer = this.querySelector('.post-tags');
+                        if (tagsContainer) {
+                            tags = Array.from(tagsContainer.querySelectorAll('.tag')).map(t => t.innerText).join(',');
+                        }
+
+                        const postData = {
+                            title, author, body, tags,
+                            timestamp: this.querySelector('.post-meta span:last-child').innerText,
+                            isStatic: true
+                        };
+                        localStorage.setItem('currentPost', JSON.stringify(postData));
+                        window.location.href = 'question.html';
+                    });
+                }
+            });
+        });
+
+        function openModal() {
+            document.getElementById('postModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('postModal').style.display = 'none';
+        }
+
+        function toggleMathEditor() {
+            const editor = document.getElementById('mathEditorContainer');
+            const btn = document.getElementById('mathToggleBtn');
+            const isHidden = editor.style.display === 'none';
+
+            editor.style.display = isHidden ? 'block' : 'none';
+            if (isHidden) {
+                btn.classList.add('active');
+                // slight delay to let display block take effect before focus
+                setTimeout(() => mathField.focus(), 50);
+            } else {
+                btn.classList.remove('active');
+            }
+        }
+
+        function insertMath() {
+            const latex = mathField.latex();
+            if (latex) {
+                const textarea = document.getElementById('postBody');
+                textarea.value += ' \\(' + latex + '\\) ';
+                mathField.latex(''); // clear editor
+
+                // Hide and reset toggler
+                document.getElementById('mathEditorContainer').style.display = 'none';
+                document.getElementById('mathToggleBtn').classList.remove('active');
+
+                textarea.focus();
+            }
+        }
+
+        function submitPost() {
+            const title = document.getElementById('postTitle').value;
+            const category = document.getElementById('postCategory').value;
+            const bodyLatex = mathField.latex(); // Get LaTeX from MathQuill
+            const tags = document.getElementById('postTags').value;
+
+            if (!title || !bodyLatex) {
+                alert('Please fill in title and question!');
+                return;
+            }
+
+            const newPost = {
+                id: Date.now(),
+                title,
+                category,
+                body: bodyLatex, // Store LaTeX
+                tags,
+                author: 'you',
+                timestamp: 'just now',
+                replies: 0,
+                likes: 0
+            };
+
+            // Save to localStorage
+            let posts = JSON.parse(localStorage.getItem('forumPosts') || '[]');
+            posts.unshift(newPost);
+            localStorage.setItem('forumPosts', JSON.stringify(posts));
+
+            // Redirect to the new post
+            viewPost(newPost.id);
+        }
+
+        function loadPosts() {
+            const posts = JSON.parse(localStorage.getItem('forumPosts') || '[]');
+            posts.forEach(post => renderPost(post));
+        }
+
+        function renderPost(post) {
+            const container = document.getElementById('postsContainer');
+
+            const postHTML = `
+                <div class="post-card" data-category="${post.category}" onclick="viewPost(${post.id})">
+                    <div class="post-header">
+                        <div>
+                            <div class="post-title">${post.title}</div>
+                            <div class="post-meta">
+                                <span class="post-author">${post.author}</span>
+                                <span>•</span>
+                                <span>${post.timestamp}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-excerpt">
+                         ${post.body}
+                    </div>
+                    <div class="post-tags">
+                        ${post.tags.split(',').map(tag => `<span class="tag">${tag.trim()}</span>`).join('')}
+                    </div>
+                    <div class="post-stats">
+                        <div class="stat">
+                            <span class="stat-icon">💬</span>
+                            <span>${post.replies} replies</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-icon">❤️</span>
+                            <span>${post.likes} helpful</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Insert after the start, before static posts
+            container.insertAdjacentHTML('afterbegin', postHTML);
+
+            // Re-render MathJax
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        function viewPost(id) {
+            const posts = JSON.parse(localStorage.getItem('forumPosts') || '[]');
+            const post = posts.find(p => p.id === id);
+            if (post) {
+                localStorage.setItem('currentPost', JSON.stringify(post));
+                window.location.href = 'question.html';
+            }
+        }
     </script>
 </body>
+
 </html>
