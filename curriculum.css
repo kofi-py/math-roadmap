@@ -1,0 +1,337 @@
+:root {
+    --primary: #FF6B9D;
+    --secondary: #4ECDC4;
+    --accent: #FFE66D;
+    --purple: #A594F9;
+    --orange: #FF8C42;
+    --blue: #6C63FF;
+    --green: #06FFA5;
+    --dark: #1A1A2E;
+    --light: #F8F9FA;
+    --gray: #6C757D;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    color: var(--dark);
+    background: linear-gradient(135deg, #ffeef8 0%, #e0f7fa 100%);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+nav {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo::before {
+    content: "π";
+    font-size: 2rem;
+    color: var(--secondary);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+.header {
+    padding: 4rem 0 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--primary), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header p {
+    font-size: 1.2rem;
+    color: var(--gray);
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+#searchBox {
+    width: 100%;
+    max-width: 600px;
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    border: 2px solid var(--secondary);
+    font-size: 1rem;
+    font-family: 'Manrope', sans-serif;
+    transition: all 0.3s ease;
+}
+
+#searchBox:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 5px 20px rgba(255, 107, 157, 0.2);
+}
+
+.progress-bar {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin: 2rem auto;
+    max-width: 800px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.progress-text {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: var(--gray);
+}
+
+.progress-fill-container {
+    width: 100%;
+    height: 15px;
+    background: rgba(255, 107, 157, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    transition: width 0.3s ease;
+    width: 0%;
+}
+
+.curriculum {
+    padding: 2rem 0 4rem;
+}
+
+.level-section {
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.level-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid;
+    border-image: linear-gradient(90deg, var(--primary), var(--secondary)) 1;
+}
+
+.level-header h2 {
+    font-size: 2rem;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+}
+
+.course-item {
+    background: linear-gradient(90deg, rgba(255, 107, 157, 0.03), rgba(78, 205, 196, 0.03));
+    padding: 2rem;
+    margin: 1.5rem 0;
+    border-radius: 15px;
+    border-left: 4px solid var(--secondary);
+    transition: all 0.3s ease;
+}
+
+.course-item:hover {
+    transform: translateX(10px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.course-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.course-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+}
+
+.course-source {
+    font-size: 0.9rem;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.course-description {
+    color: var(--gray);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.course-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.btn-start {
+    padding: 0.75rem 2rem;
+    background: linear-gradient(135deg, var(--primary), var(--purple));
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-start:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 107, 157, 0.3);
+}
+
+.btn-complete {
+    padding: 0.75rem 1.5rem;
+    background: white;
+    color: var(--dark);
+    border: 2px solid var(--secondary);
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Manrope', sans-serif;
+}
+
+.btn-complete:hover {
+    background: var(--secondary);
+    color: white;
+}
+
+.btn-complete.completed {
+    background: var(--green);
+    border-color: var(--green);
+    color: white;
+}
+
+footer {
+    background: var(--dark);
+    color: white;
+    padding: 3rem 0 2rem;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h4 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.footer-section a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    display: block;
+    margin: 0.5rem 0;
+    transition: all 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: var(--primary);
+    transform: translateX(5px);
+}
+
+.copyright {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .level-section {
+        padding: 2rem 1.5rem;
+    }
+
+    .course-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-start,
+    .btn-complete {
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+}
