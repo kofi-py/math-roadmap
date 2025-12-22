@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
 /* GET QUESTIONS */
 router.get("/", async (req, res) => {
   try {
-    constresult = await db.query("SELECT * FROM questions ORDER BY created_at DESC");
+    const result = await db.query("SELECT * FROM questions ORDER BY created_at DESC");
     res.json(result.rows);
   } catch (err) {
     res.status(500).json({ error: err.message });
