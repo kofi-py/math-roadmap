@@ -103,7 +103,7 @@ function insertMath() {
     }
 }
 
-function submitPost() {
+async function submitPost() {
     const title = document.getElementById('postTitle').value;
     const category = document.getElementById('postCategory').value;
     const bodyLatex = mathField.latex(); // Get LaTeX from MathQuill
@@ -115,29 +115,55 @@ function submitPost() {
     }
 
     const newPost = {
-        id: Date.now(),
         title,
-        category,
-        body: bodyLatex, // Store LaTeX
+        category: category || 'general', // Default if empty
+        content: bodyLatex, // Backend expects 'content'
         tags,
-        author: 'you',
-        timestamp: 'just now',
-        replies: 0,
-        likes: 0
+        // Backend handles id, timestamp, etc.
     };
 
-    // Save to localStorage
-    let posts = JSON.parse(localStorage.getItem('forumPosts') || '[]');
-    posts.unshift(newPost);
-    localStorage.setItem('forumPosts', JSON.stringify(posts));
+    try {
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newPost)
+        });
 
-    // Redirect to the new post
-    viewPost(newPost.id);
+        if (response.ok) {
+            const savedPost = await response.json();
+            // Redirect to the new post using URL ID
+            viewPost(savedPost.id);
+        } else {
+            alert('Error creating post');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Failed to connect to server');
+    }
 }
 
-function loadPosts() {
-    const posts = JSON.parse(localStorage.getItem('forumPosts') || '[]');
-    posts.forEach(post => renderPost(post));
+// Load posts from backend
+const API_URL = 'http://localhost:3000/api/questions';
+
+async function loadPosts() {
+    try {
+        const response = await fetch(API_URL);
+        const posts = await response.json();
+        // Clear existing dynamic posts first (keep static ones if needed? 
+        // Actually, the original code prepended. Let's strictly use backend posts or clarify if static posts should remain.
+        // The user said "Fetch questions from the backend".
+        // I will clear the container of dynamic posts or just append.
+        // Let's rely on standard refreshing.
+
+        // Remove existing dynamic posts to avoid duplicates if called multiple times (though currently only called on load)
+        // document.querySelectorAll('.dynamic-post').forEach(e => e.remove());
+
+        posts.forEach(post => renderPost(post));
+    } catch (error) {
+        console.error('Error loading posts:', error);
+    }
 }
 
 function renderPost(post) {
@@ -149,26 +175,26 @@ function renderPost(post) {
                         <div>
                             <div class="post-title">${post.title}</div>
                             <div class="post-meta">
-                                <span class="post-author">${post.author}</span>
+                                <span class="post-author">User</span>
                                 <span>•</span>
-                                <span>${post.timestamp}</span>
+                                <span>${new Date(post.created_at || Date.now()).toLocaleDateString()}</span>
                             </div>
                         </div>
                     </div>
                     <div class="post-excerpt">
-                         ${post.body}
+                         ${post.content || post.body} 
                     </div>
                     <div class="post-tags">
-                        ${post.tags.split(',').map(tag => `<span class="tag">${tag.trim()}</span>`).join('')}
+                        ${post.tags ? post.tags.split(',').map(tag => `<span class="tag">${tag.trim()}</span>`).join('') : ''}
                     </div>
                     <div class="post-stats">
                         <div class="stat">
                             <span class="stat-icon">💬</span>
-                            <span>${post.replies} replies</span>
+                            <span>${post.replies || 0} replies</span>
                         </div>
                         <div class="stat">
                             <span class="stat-icon">❤️</span>
-                            <span>${post.likes} helpful</span>
+                            <span>${post.votes || 0} helpful</span>
                         </div>
                     </div>
                 </div>
@@ -184,10 +210,5 @@ function renderPost(post) {
 }
 
 function viewPost(id) {
-    const posts = JSON.parse(localStorage.getItem('forumPosts') || '[]');
-    const post = posts.find(p => p.id === id);
-    if (post) {
-        localStorage.setItem('currentPost', JSON.stringify(post));
-        window.location.href = 'question.html';
-    }
+    window.location.href = `question.html?id=${id}`;
 }

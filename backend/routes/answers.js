@@ -12,7 +12,7 @@ router.post("/", (req, res) => {
   }
 
   db.run(
-    "INSERT INTO answers (question_id, content) VALUES (?, ?)",
+    "INSERT INTO answers (question_id, body) VALUES (?, ?)",
     [question_id, content],
     function (err) {
       if (err) {

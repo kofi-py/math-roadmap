@@ -35,6 +35,22 @@
                     <p>Loading question...</p>
                 </div>
             </div>
+
+            <div class="answers-section" style="margin-top: 2rem;">
+                <h3>Answers</h3>
+                <div id="answersContainer">
+                    <!-- Answers injected here -->
+                </div>
+
+                <div class="post-answer-card"
+                    style="background: white; padding: 2rem; border-radius: 12px; margin-top: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                    <h4 style="margin-bottom: 1rem;">Post your answer</h4>
+                    <textarea id="answerBody" class="form-input"
+                        style="width: 100%; min-height: 100px; padding: 10px; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 8px;"
+                        placeholder="Type your answer here..."></textarea>
+                    <button class="btn btn-primary" onclick="submitAnswer()">Post Answer</button>
+                </div>
+            </div>
         </div>
     </div>
 
