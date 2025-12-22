@@ -42,4 +42,22 @@ router.get("/", (req, res) => {
   );
 });
 
+// mark an answer as accepted
+router.patch("/:id/accept", (req, res) => {
+  const questionId = req.params.id;
+  const { answerId } = req.body;
+
+  db.run(
+    "UPDATE questions SET accepted_answer_id = ? WHERE id = ?",
+    [answerId, questionId],
+    function (err) {
+      if (err) {
+        return res.status(500).json({ error: err.message });
+      }
+      res.json({ success: true });
+    }
+  );
+});
+
+
 module.exports = router;

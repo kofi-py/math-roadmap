@@ -30,6 +30,10 @@ db.serialize(() => {
       FOREIGN KEY (question_id) REFERENCES questions(id)
     )
   `);
+  db.run(`
+  ALTER TABLE questions ADD COLUMN accepted_answer_id INTEGER
+`, () => {});
+
 
   
 });
