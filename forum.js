@@ -106,10 +106,10 @@ function insertMath() {
 async function submitPost() {
     const title = document.getElementById('postTitle').value;
     const category = document.getElementById('postCategory').value;
-    const bodyLatex = mathField.latex(); // Get LaTeX from MathQuill
+    const content = document.getElementById('postBody').value;
     const tags = document.getElementById('postTags').value;
 
-    if (!title || !bodyLatex) {
+    if (!title || !content) {
         alert('Please fill in title and question!');
         return;
     }
@@ -117,7 +117,7 @@ async function submitPost() {
     const newPost = {
         title,
         category: category || 'general', // Default if empty
-        content: bodyLatex, // Backend expects 'content'
+        content: content,
         tags,
         // Backend handles id, timestamp, etc.
     };
