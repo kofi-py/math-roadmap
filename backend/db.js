@@ -1,6 +1,14 @@
-const sqlite3 = require("sqlite3").verbose();
+require("dotenv").config();
+const { Pool } = require("pg");
 
-const db = new sqlite3.Database("./database.db", (err) => {
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
+
+pool.connect((err) => {
   if (err) {
     console.error("database connection failed:", err);
   } else {
@@ -8,35 +16,36 @@ const db = new sqlite3.Database("./database.db", (err) => {
   }
 });
 
-// create tables (runs once safely)
-db.serialize(() => {
-  db.run(`
-    CREATE TABLE IF NOT EXISTS questions (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      title TEXT NOT NULL,
-      body TEXT NOT NULL,
-      tags TEXT,
-      votes INTEGER DEFAULT 0,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    )
-  `);
+const createTables = async () => {
+  try {
+    await pool.query(`
+            CREATE TABLE IF NOT EXISTS questions (
+                id SERIAL PRIMARY KEY,
+                title TEXT NOT NULL,
+                body TEXT NOT NULL,
+                tags TEXT,
+                votes INTEGER DEFAULT 0,
+                accepted_answer_id INTEGER,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );
+        `);
 
-  db.run(`
-    CREATE TABLE IF NOT EXISTS answers (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      question_id INTEGER,
-      body TEXT NOT NULL,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      FOREIGN KEY (question_id) REFERENCES questions(id)
-    )
-  `);
-  db.run(`
-  ALTER TABLE questions ADD COLUMN accepted_answer_id INTEGER
-`, () => {});
+    await pool.query(`
+            CREATE TABLE IF NOT EXISTS answers (
+                id SERIAL PRIMARY KEY,
+                question_id INTEGER REFERENCES questions(id),
+                body TEXT NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );
+        `);
+    console.log("tables created successfully");
+  } catch (err) {
+    console.error("error creating tables:", err);
+  }
+};
 
+createTables();
 
-  
-});
-
-
-module.exports = db;
+module.exports = {
+  query: (text, params) => pool.query(text, params),
+};
