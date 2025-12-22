@@ -151,14 +151,9 @@ async function loadPosts() {
     try {
         const response = await fetch(API_URL);
         const posts = await response.json();
-        // Clear existing dynamic posts first (keep static ones if needed? 
-        // Actually, the original code prepended. Let's strictly use backend posts or clarify if static posts should remain.
-        // The user said "Fetch questions from the backend".
-        // I will clear the container of dynamic posts or just append.
-        // Let's rely on standard refreshing.
 
-        // Remove existing dynamic posts to avoid duplicates if called multiple times (though currently only called on load)
-        // document.querySelectorAll('.dynamic-post').forEach(e => e.remove());
+        const container = document.getElementById('postsContainer');
+        container.innerHTML = ''; // Clear loading text
 
         posts.forEach(post => renderPost(post));
     } catch (error) {
