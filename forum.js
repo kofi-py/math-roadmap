@@ -145,7 +145,7 @@ async function submitPost() {
 }
 
 // Load posts from backend
-const API_URL = 'http://localhost:3000/api/questions';
+const API_URL = 'https://math-roadmap-backend.onrender.com/api/questions';
 
 async function loadPosts() {
     try {
