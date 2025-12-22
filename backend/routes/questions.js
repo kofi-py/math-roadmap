@@ -97,4 +97,23 @@ router.patch("/:id/accept", async (req, res) => {
 });
 
 
+// mark an answer as accepted
+router.patch("/:id/vote", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const result = await db.query(
+      "UPDATE questions SET votes = votes + 1 WHERE id = $1 RETURNING votes",
+      [id]
+    );
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: "Question not found" });
+    }
+    res.json({ votes: result.rows[0].votes });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
 module.exports = router;

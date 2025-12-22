@@ -192,9 +192,9 @@ function renderPost(post) {
                             <span class="stat-icon">💬</span>
                             <span>${post.replies || 0} replies</span>
                         </div>
-                        <div class="stat">
+                        <div class="stat" onclick="votePost(${post.id}, event)" style="cursor: pointer;">
                             <span class="stat-icon">❤️</span>
-                            <span>${post.votes || 0} helpful</span>
+                            <span id="votes-${post.id}">${post.votes || 0} helpful</span>
                         </div>
                     </div>
                 </div>
@@ -211,4 +211,22 @@ function renderPost(post) {
 
 function viewPost(id) {
     window.location.href = `question.html?id=${id}`;
+}
+
+async function votePost(id, event) {
+    event.stopPropagation(); // Prevent opening the post
+    try {
+        const response = await fetch(`${API_URL}/${id}/vote`, {
+            method: 'PATCH'
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            document.getElementById(`votes-${id}`).innerText = `${data.votes} helpful`;
+        } else {
+            alert('Error upvoting');
+        }
+    } catch (error) {
+        console.error('Error voting:', error);
+    }
 }
